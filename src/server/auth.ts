@@ -5,7 +5,7 @@ import { type GetServerSidePropsContext } from "next";
 import {
   getServerSession,
   type DefaultSession,
-  type NextAuthOptions,
+  type NextAuthOptions
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import GitHubProvider from "next-auth/providers/github";
@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
-      allowDangerousEmailAccountLinking: true,
+      allowDangerousEmailAccountLinking: true
     }),
     /**
      * ...add more providers here.

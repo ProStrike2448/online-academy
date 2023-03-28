@@ -11,9 +11,9 @@ type NavProps = {
 };
 
 const Nav: FC<NavProps> = ({ links }) => (
-  <nav className="flex space-x-2">
+  <nav className="flex space-x-3">
     {links.map(({ title, url }) => (
-      <Link key={title} href={url} className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">{title}</Link>
+      <Link key={title} href={url} className="rounded-lg  py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">{title}</Link>
     ))}
   </nav>
 );
