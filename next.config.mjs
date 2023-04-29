@@ -11,6 +11,8 @@ const config = {
   reactStrictMode: true,
   experimental: {
     appDir: true,
+    typedRoutes: true,
+    serverComponentsExternalPackages: ["@prisma/client"],
   },
   images: {
     remotePatterns: [

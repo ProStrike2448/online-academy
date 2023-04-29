@@ -12,3 +12,4 @@ export default function Providers({
 }) {
   return <SessionProvider session={session}>{children}</SessionProvider>;
 }
+ 

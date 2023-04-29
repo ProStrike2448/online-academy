@@ -4,6 +4,7 @@ import Providers from "./Providers";
 
 import "@/styles/globals.css";
 import Header from "./Header";
+import { authOptions } from "@/server/auth";
 
 export default async function RootLayout({
   // Layouts must accept a children prop.
@@ -12,7 +13,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session: Session | null = await getServerSession();
+  const session: Session | null = await getServerSession(authOptions);
   return (
     <html lang="en">
       <Providers session={session}>
