@@ -3,6 +3,7 @@
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
@@ -20,28 +21,28 @@ model Example {
     updatedAt DateTime @updatedAt
 }
 
-// model Lessons {
-//     id        String   @id @default(cuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-//     name      String
-//     description String
-//     video     String
-//     course    Courses  @relation(fields: [courseId], references: [id])
-//     courseId  String
-// }
+model Lessons {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    name      String
+    description String
+    video     String
+    course    Courses  @relation(fields: [courseId], references: [id])
+    courseId  String
+}
 
-// model Courses {
-//     id        String   @id @default(cuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-//     name      String
-//     description String
-//     price     Int
-//     image     String
-//     category  String
-//     lessons   Lessons[]
-// }
+model Courses {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    name      String
+    description String
+    price     Int
+    image     String
+    category  String
+    lessons   Lessons[]
+}
 
 // Necessary for Next auth
 model Account {

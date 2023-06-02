@@ -1,6 +1,5 @@
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "@/server/auth";
 import type { Metadata } from "next";
-import { authOptions } from "@/server/auth";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -9,12 +8,14 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
-  console.log(session);
+  const session = await getServerAuthSession();
+  // console.log(session);
+
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]"></main>
-      <pre>{JSON.stringify(session)}</pre>
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+      </main>
     </>
   );
 }

@@ -2,7 +2,9 @@ import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import type { UserRole } from "@prisma/client";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import {
+  getServerSession,
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
@@ -39,31 +41,31 @@ declare module "next-auth" {
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
-        session.user.role = user.role;
-        // session.user.role = user.role; <-- put other properties on the session here
-      }
-      return session;
-    },
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+        role: user.role,
+      },
+    }),
   },
   adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET,
-      allowDangerousEmailAccountLinking: true,
+      // allowDangerousEmailAccountLinking: true,
     }),
     GitHubProvider({
       clientId: env.GITHUB_ID,
       clientSecret: env.GITHUB_SECRET,
-      allowDangerousEmailAccountLinking: true,
+      // allowDangerousEmailAccountLinking: true,
     }),
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
-      allowDangerousEmailAccountLinking: true,
+      // allowDangerousEmailAccountLinking: true,
     }),
     /**
      * ...add more providers here.
@@ -78,4 +80,16 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/signin",
   },
+};
+
+/**
+ * Wrapper for `getServerSession` so that you don't need to import the
+ * `authOptions` in every file.
+ *
+ * @see https://next-auth.js.org/configuration/nextjs
+ **/
+export const getServerAuthSession = (
+  ...args: [NextApiRequest, NextApiResponse] | []
+) => {
+  return getServerSession(...args, authOptions);
 };
