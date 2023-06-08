@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import course from "./course";
 
 export default defineType({
   name: "lesson",
@@ -15,7 +16,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: [course.title, "/", "title"],
         maxLength: 96,
       },
     }),

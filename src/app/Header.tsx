@@ -1,6 +1,6 @@
-import SignIn from "../components/auth/SignIn";
-import type { NavLink } from "../components/header/Nav";
-import Nav from "../components/header/Nav";
+import SignIn from "@/app/components/auth/SignIn";
+import type { NavLink } from "@/app/components/header/Nav";
+import Nav from "@/app/components/header/Nav";
 
 export default function Header() {
   const links: NavLink[] = [

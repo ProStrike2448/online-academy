@@ -1,5 +1,6 @@
 import { getServerAuthSession } from "@/server/auth";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -9,12 +10,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const session = await getServerAuthSession();
-  // console.log(session);
 
   return (
     <>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <pre>{JSON.stringify(session, null, 2)}</pre>
+        <pre>{JSON.stringify(session, null, 2)}</pre>  
       </main>
     </>
   );
