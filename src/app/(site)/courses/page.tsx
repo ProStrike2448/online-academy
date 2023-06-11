@@ -20,7 +20,7 @@ import { type Courses } from "@prisma/client";
 //   return res.json() as Promise<Courses[]>;
 // };
 
-export default async function Courses() {
+export default function Courses() {
   // const data = await getCourses(1, "1");
   return <pre>Courses</pre>;
 }
