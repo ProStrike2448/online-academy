@@ -7,7 +7,7 @@ export default function Header() {
 		{ title: 'Courses', url: '/courses' }
 	]
 	return (
-		<header className='sticky inset-x-0 top-2 z-50 mx-2 mb-2 flex h-14 items-center justify-around rounded-3xl bg-black'>
+		<header className='sticky top-2 z-50 mx-2 flex h-14 items-center justify-around rounded-3xl bg-black'>
 			<Nav links={links} />
 			<SignIn />
 		</header>

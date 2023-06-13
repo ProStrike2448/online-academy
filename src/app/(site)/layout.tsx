@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import AuthProvider from './AuthProvider'
 
 import '@/styles/globals.css'
@@ -18,6 +19,15 @@ export default function RootLayout({
 		<html lang='en'>
 			<AuthProvider>
 				<body>
+					<div className='fixed -z-10 h-[100vh] w-[100vw] overflow-hidden'>
+						<Image
+							src={'/stacked-waves-haikei.svg'}
+							fill
+              quality={100}
+							alt='flatbg'
+							className='object-cover brightness-50'
+						/>
+					</div>
 					<Header />
 					{modal}
 					{children}

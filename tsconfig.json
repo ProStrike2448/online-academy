@@ -19,6 +19,7 @@
 		"baseUrl": "./src",
 		"paths": {
 			"@/*": ["*"],
+      "@/sanity/*": ["../sanity/*"],
 		},
 		"plugins": [
 			{

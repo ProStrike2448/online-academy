@@ -1,26 +1,28 @@
-import { type Courses } from "@prisma/client";
+import CourseCardsList from '@/components/CourseCardsList'
+import PreviewSuspense from '@/components/PreviewSuspense'
+import { clientFetch } from '@/sanity/lib/client'
+import { groq } from 'next-sanity'
+import { draftMode } from 'next/headers'
+import { type Course } from '@/../typings'
 
-// const getCourses = async (
-//   take: number,
-//   cursor: string | undefined
-// ): Promise<Courses[]> => {
-//   const res = await fetch(
-//     `http://localhost:3000/api/courses?take=${take}` +
-//       (cursor ? `&cursor=${cursor}` : "")
-//   );
-//   // The return value is *not* serialized
-//   // You can return Date, Map, Set, etc.
+const query = groq`
+  *[_type == "course"] | order(_createdAt desc) {
+    "id": _id,
+    title, 
+    "slug": slug.current,
+    "image": image.asset->url,
+    price
+  } `
 
-//   // Recommendation: handle errors
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error("Failed to fetch data");
-//   }
+export default async function Courses() {
+	if (draftMode().isEnabled) {
+		return (
+			<PreviewSuspense fallback='Loading...'>
+				<div>Prevew Mode</div>
+			</PreviewSuspense>
+		)
+	}
+	const courses: Course[] = await clientFetch(query)
 
-//   return res.json() as Promise<Courses[]>;
-// };
-
-export default function Courses() {
-  // const data = await getCourses(1, "1");
-  return <pre>Courses</pre>;
+	return <CourseCardsList cards={courses} />
 }

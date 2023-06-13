@@ -17,7 +17,7 @@ const Nav: FC<NavProps> = ({ links }) => (
 			<Link
 				key={title}
 				href={url}
-				className='rounded-lg  py-2 font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900'
+				className='rounded-lg p-2 font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900'
 			>
 				{title}
 			</Link>

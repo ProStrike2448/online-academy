@@ -1,11 +1,9 @@
-'use client'
-
-import { signIn, useSession } from 'next-auth/react'
+import { getServerAuthSession } from '@/lib/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function SignIn() {
-	const { data: session } = useSession()
+export default async function SignIn() {
+	const session = await getServerAuthSession()
 
 	if (session) {
 		return (
@@ -30,8 +28,8 @@ export default function SignIn() {
 	}
 
 	return (
-		<button className='btn-primary btn' onClick={() => void signIn()}>
+		<Link className='btn-primary btn rounded-xl' href='/signin'>
 			Sign in
-		</button>
+		</Link>
 	)
 }
