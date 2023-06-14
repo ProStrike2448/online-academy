@@ -43,7 +43,7 @@ export default async function Course({ params: { courseSlug } }: CourseProps) {
 					</p>
           <div className='justify-evenly -space-x-2 overflow-hidden'>
 				{course.teachers.map(({ _id, photo, slug, name }) => (
-					<div className='w-60 mt-8 justify-center bg-black' key={_id}>
+					<div className='w-60 mt-8 ml-4 justify-center bg-black' key={_id}>
 						<Link
 							className='absolute h-10 w-10'
 							key={_id}

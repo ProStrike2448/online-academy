@@ -1,4 +1,4 @@
-import { type PortableTextTextBlock } from 'sanity'
+import { type PortableTextBlock } from 'sanity'
 import { type UrlObject } from 'url'
 
 
@@ -23,7 +23,7 @@ interface Lesson extends Base {
 	title: string
 	slug: string
 	summary: string
-	content: PortableTextTextBlock[]
+	content: PortableTextBlock[]
 }
 
 interface Block {

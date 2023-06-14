@@ -63,7 +63,7 @@ export default async function Home() {
 							<ul className='font-medium text-gray-500 dark:text-gray-400'>
 								<li className='mb-4'>
 									<Link
-										href='semi.acad.ofcl@gmail.com'
+										href='https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMScbXWbnzVVzpzlsKmRhSHcqCcprwPkpxRdFbBHpwfBntRMFQwLbvgBhskcwDNdMBsGJvZ'
 										className='hover:underline'
 									>
 										Gmail

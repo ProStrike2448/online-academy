@@ -21,6 +21,8 @@ export default defineConfig({
 	],
 
 	schema: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
 		types: schemaTypes
 	}
 })
