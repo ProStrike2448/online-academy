@@ -1,5 +1,7 @@
+import { type Lesson, type Teacher } from '@/../typings'
 import { FiAward, FiImage, FiUsers } from 'react-icons/fi'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { type UrlObject } from 'url'
 
 export default defineType({
 	name: 'course',
@@ -42,7 +44,7 @@ export default defineType({
 					'A slug is required to generate a page on the website!'
 				)
 		}),
-    defineField({
+		defineField({
 			name: 'description',
 			title: 'Description',
 			type: 'text',
@@ -50,12 +52,12 @@ export default defineType({
 			validation: Rule =>
 				Rule.max(400).warning('Description should be less than 400 characters')
 		}),
-    defineField({
-      name: 'price',
-      title: 'Price',
-      type: 'number',
-      validation: Rule => Rule.required()
-    }),
+		defineField({
+			name: 'price',
+			title: 'Price',
+			type: 'number',
+			validation: Rule => Rule.required()
+		}),
 		defineField({
 			name: 'teachers',
 			group: 'teachers',
@@ -85,7 +87,7 @@ export default defineType({
 		}),
 		defineField({
 			name: 'image',
-      title: 'Image',
+			title: 'Image',
 			type: 'image',
 			group: ['media']
 		})
@@ -93,11 +95,35 @@ export default defineType({
 	preview: {
 		select: {
 			title: 'title',
-      description: 'description',
-      price: 'price',
 			lessons: 'lessons',
 			teachers: 'teachers',
 			image: 'image'
+		},
+		prepare({
+			title,
+			lessons,
+			teachers,
+			image
+		}: {
+			title: string
+			lessons: Lesson[]
+			teachers: Teacher[]
+			image: UrlObject & string
+		}) {
+			const lessonCount = lessons.length || 0
+			const lessonSubtitle = lessonCount
+				? `${lessonCount} ${lessonCount === 1 ? `lesson` : `lessons`}`
+				: 'No lessons'
+			const teacherCount = teachers.length || 0
+			const teacherSubtitle = teacherCount
+				? `${teacherCount} ${teacherCount === 1 ? `teacher` : `teachers`}`
+				: 'No teachers'
+
+      return {
+        title,
+        subtitle: `${lessonSubtitle} | ${teacherSubtitle}`,
+        media: image
+      }
 		}
 	}
 })

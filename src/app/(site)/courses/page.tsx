@@ -22,6 +22,7 @@ export default async function Courses() {
 			</PreviewSuspense>
 		)
 	}
+  
 	const courses: Course[] = await clientFetch(query)
 
 	return <CourseCardsList cards={courses} />

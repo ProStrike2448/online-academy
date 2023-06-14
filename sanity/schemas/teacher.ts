@@ -44,9 +44,9 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			name: 'name',
-			bio: 'bio',
-			photo: 'photo'
+			title: 'name',
+			subtitle: 'bio',
+			media: 'photo'
 		}
 	}
 })

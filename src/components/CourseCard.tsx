@@ -12,18 +12,18 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ title, slug, image, price }) => {
 	return (
-		<div className='mt-8 max-w-sm flex-col rounded-3xl border border-gray-200 shadow drop-shadow-2xl dark:border-gray-700 dark:bg-gray-800'>
+		<div className='relative flex-col rounded-3xl border border-gray-200 shadow drop-shadow-2xl dark:border-gray-700 dark:bg-gray-800'>
 			<Link href={`/courses/${slug}` as Route}>
-				<div className='relative aspect-video w-full scale-90 md:shrink-0'>
+				<div className='relative aspect-video w-full md:shrink-0'>
 					<Image
 						src={image}
 						alt={`${title} image`}
 						fill={true}
-						className='rounded-2xl'
+						className='rounded-t-3xl'
 					/>
 				</div>
 			</Link>
-			<div className='px-5 pb-5'>
+			<div className='mt-4 px-5 pb-5'>
 				<Link href={`/courses/${slug}` as Route}>
 					<h5 className='text-xl font-semibold tracking-tight text-gray-900 dark:text-white'>
 						{title}

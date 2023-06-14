@@ -11,7 +11,7 @@ export default async function Lessons({
 }: LessonsProps) {
 	const query = groq`
   *[_type == "lesson" && slug.current == $slug] | order(_createdAt desc) {
-    title, content
+    title, summary, content
   }[0]`
 
 	const lesson: Lesson = await clientFetch(query, { slug: lessonSlug })

@@ -40,11 +40,9 @@ export default defineType({
 			type: 'portableText'
 		})
 	],
-  preview: {
-    select: {
-      title: 'title',
-      summary: 'summary',
-      content: 'content'
-    }
-  }
+	preview: {
+		select: {
+			title: 'title'
+		}
+	}
 })

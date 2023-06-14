@@ -14,16 +14,7 @@ export default async function Home() {
 
 	return (
 		<>
-			<div className='absolute -z-10 h-full w-full'>
-				<Image
-					src={'/stacked-waves-haikei.svg'}
-					fill={true}
-					alt='flatbg'
-					priority={true}
-					className='object-cover brightness-50'
-				/>
-			</div>
-			<main className='flex h-screen items-center justify-center'>
+			<main className='relative flex h-screen items-center justify-center'>
 				<div className='grid max-w-7xl grid-cols-1 grid-rows-2 gap-8 md:grid-cols-2 md:grid-rows-1'>
 					<div className='mx-4 md:mx-8 2xl:ml-0'>
 						<h1 className='text-xl font-bold leading-normal text-white md:text-2xl lg:text-4xl lg:leading-10 xl:text-6xl'>
@@ -55,7 +46,7 @@ export default async function Home() {
 							src={'/hero-img.png'}
 							fill={true}
 							alt='heroimg'
-							className='overflow-visible object-cover'
+							className='object-cover overflow-visible'
 							quality={100}
 						/>
 					</div>
