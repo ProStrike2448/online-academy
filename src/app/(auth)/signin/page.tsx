@@ -8,7 +8,7 @@ export default async function SignIn() {
 
 	return (
 		<>
-			<div className='flex min-h-screen items-center bg-gradient-to-b from-[#2e026d] to-[#15162c]'>
+			<div className='flex min-h-screen items-center'>
 				<div className='container mx-auto max-w-md rounded-lg border border-gray-200 bg-white p-4 shadow-md dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:p-8'>
 					<section className='space-y-6'>
 						{Object.values(providers ? providers : {}).map(provider => (

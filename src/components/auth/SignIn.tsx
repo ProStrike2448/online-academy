@@ -28,7 +28,7 @@ export default async function SignIn() {
 	}
 
 	return (
-		<Link className='btn-primary btn rounded-xl' href='/signin'>
+		<Link className='btn-primary btn rounded-2xl scale-90' href='/signin'>
 			Sign in
 		</Link>
 	)

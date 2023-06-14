@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import Image from 'next/image'
 
 export const metadata = {
 	title: 'Next.js',
@@ -12,9 +13,18 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang='en'>
-
-			<body>{children}</body>
-
+			<body>
+				<div className='fixed -z-10 h-screen w-screen'>
+					<Image
+						src={'/stacked-waves-haikei.svg'}
+						fill
+						quality={100}
+						alt='flatbg'
+						className='object-cover brightness-[.75]'
+					/>
+				</div>
+				{children}
+			</body>
 		</html>
 	)
 }
