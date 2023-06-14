@@ -21,6 +21,6 @@ const getCourses = async (
 }
 
 async function Courses() {
-	const data = await getCourses(1, '-1')
+	const data = await getCourses(1, '1')
 	return <pre>{JSON.stringify(data, null, 4)}</pre>
 }
